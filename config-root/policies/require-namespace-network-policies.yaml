@@ -1,0 +1,8 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRequireNamespaceNetworkPolicies
+metadata:
+  name: require-namespace-network-policies
+  annotations:
+    description: "Requires that every namespace defined in the cluster has a NetworkPolicy."
+spec:
+  enforcementAction: dryrun

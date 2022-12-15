@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security-agent
+  namespace: secops-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: security-agent
+  template:
+    metadata:
+      labels:
+        app: security-agent
+    spec:
+      containers:
+      - name: whereami
+        image: us-docker.pkg.dev/google-samples/containers/gke/whereami:v1.2.11
+        ports:
+          - containerPort: 8080
+        env:
+        - name: METADATA
+          value: "security"
